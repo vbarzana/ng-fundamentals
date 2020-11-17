@@ -1,0 +1,9 @@
+import {EVENTS_DATA} from '../../../misc/event-data.js';
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class EventService {
+    getEvents() {
+        return EVENTS_DATA;
+    }
+}
