@@ -1,19 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'app-event-thumbnail',
     templateUrl: './event-thumbnail.component.html',
-    styleUrls: ['./event-thumbnail.component.css']
+    styles: [`
+        .pad-left {
+            margin-left: 5px;
+        }
+
+        .well div {
+            color: #BBBBBB;
+        }
+    `]
 })
-export class EventThumbnailComponent implements OnInit {
-
-    @Input()
-    event: any;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
-
+export class EventThumbnailComponent {
+    @Input() event: any;
 }
