@@ -16,7 +16,7 @@ export class EventDetailsComponent implements OnInit {
     ngOnInit() {
         const id: number = parseInt(this.route.snapshot.paramMap.get('id'), 10);
         if (!isNaN(id)) {
-            this.event = this.eventsService.getEventById(id);
+            this.event = this.eventsService.getEvent(id);
         }
     }
 
