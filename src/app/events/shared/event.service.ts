@@ -1,17 +1,10 @@
 import {EVENTS_DATA} from '../../../misc/event-data';
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
-import {IEvent} from './event.model';
+import {IEvent} from './index';
 
 @Injectable()
 export class EventService {
     getEvents(): IEvent[] {
-        // const subject = new Subject();
-        // setTimeout(() => {
-        //     subject.next(EVENTS_DATA);
-        //     subject.complete();
-        // }, 1000);
-        // return subject;
         return EVENTS_DATA;
     }
 
