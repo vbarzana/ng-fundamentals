@@ -1,6 +1,7 @@
 {
   "name": "ng-fundamentals",
   "version": "0.0.0",
+  "homepage": "https://vbarzana.github.io/ng-fundamentals/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
