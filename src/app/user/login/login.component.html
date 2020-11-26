@@ -4,10 +4,11 @@
     <form autocomplete="off" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" novalidate>
         <div class="form-group">
             <label for="userName">User Name:</label>
-            <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
+            <em *ngIf="userName?.invalid && (userName?.touched || mouseoverLogin)">Required</em>
             <input
-                    [(ngModel)]="userName"
+                    ngModel
                     name="userName"
+                    #userName="ngModel"
                     type="text"
                     class="form-control"
                     placeholder="User Name..."
@@ -16,9 +17,10 @@
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <em *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+            <em *ngIf="password?.invalid && (password?.touched || mouseoverLogin)">Required</em>
             <input
-                    [(ngModel)]="password"
+                    ngModel
+                    #password="ngModel"
                     name="password"
                     type="password"
                     class="form-control"
