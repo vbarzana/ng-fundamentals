@@ -7,7 +7,7 @@ import {delay} from 'rxjs/operators';
 @Injectable()
 export class EventService {
     getEvents(): Observable<IEvent[]> {
-        return of(EVENTS_DATA).pipe(delay(2000));
+        return of(EVENTS_DATA).pipe(delay(500));
     }
 
     getEvent(id: number): IEvent {
