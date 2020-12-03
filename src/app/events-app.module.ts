@@ -23,7 +23,7 @@ import {UserModule} from './user/user.module';
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
     ],
     declarations: [
         EventsAppComponent,
