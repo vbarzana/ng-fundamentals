@@ -10,8 +10,9 @@
                         type="text"
                         class="form-control"
                         placeholder="First Name..."
-                        [ngClass]="{error: validateFirstName()}"
+                        [ngClass]="{error: !validateFirstName()}"
                 />
+                <em *ngIf="!validateFirstName()">Required</em>
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name:</label>
@@ -20,8 +21,9 @@
                         type="text"
                         class="form-control"
                         placeholder="Last Name..."
-                        [ngClass]="{error: validateLastName()}"
+                        [ngClass]="{'error': !validateLastName()}"
                 />
+                <em *ngIf="!validateLastName()">Required</em>
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
