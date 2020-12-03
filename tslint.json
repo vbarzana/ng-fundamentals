@@ -1,6 +1,5 @@
 {
   "rulesDirectory": [
-    "codelyzer"
   ],
   "rules": {
     "arrow-return-shorthand": true,
