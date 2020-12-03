@@ -4,7 +4,7 @@ import {EventService, IEvent} from '../shared/index';
 
 @Component({
     templateUrl: './event-details.component.html',
-    styleUrls: ['./event-details.component.css']
+    styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
     event: IEvent;

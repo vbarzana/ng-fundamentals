@@ -138,5 +138,10 @@
       }
     }
   },
-  "defaultProject": "ng-fundamentals"
+  "defaultProject": "ng-fundamentals",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
