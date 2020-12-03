@@ -18,6 +18,7 @@ import {
     EventThumbnailComponent
 } from './events/index';
 import {AuthService} from './user/auth.service';
+import {UserModule} from './user/user.module';
 
 @NgModule({
     imports: [
@@ -31,7 +32,6 @@ import {AuthService} from './user/auth.service';
         EventDetailsComponent,
         CreateEventComponent,
         Error404Component,
-        NavbarComponent,
         NavbarComponent
     ],
     providers: [

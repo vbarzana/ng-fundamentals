@@ -1,23 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
+import {Component, Injectable, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../auth.service';
-import {ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
     templateUrl: './profile.component.html'
 })
-export class ProfileComponent implements OnInit, CanActivate {
+export class ProfileComponent implements OnInit {
     public profileForm: FormGroup;
 
     constructor(private authService: AuthService, private router: Router) {
-        const {currentUser} = authService;
-        if (!currentUser) {
+        if (!authService.currentUser) {
             this.router.navigate(['user/login']);
         }
-    }
-
-    canActivate(route: ActivatedRouteSnapshot) {
-        return !!this.authService.currentUser;
     }
 
     ngOnInit() {
@@ -31,7 +26,8 @@ export class ProfileComponent implements OnInit, CanActivate {
     }
 
     saveProfile(formValues) {
-        console.log(formValues);
+        this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
+        this.router.navigate(['events']);
     }
 
     cancel() {
