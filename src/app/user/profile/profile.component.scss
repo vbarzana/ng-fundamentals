@@ -9,9 +9,9 @@ em {
     background-color: #E3C3C5;
   }
 
-  &&::-webkit-input-placeholder,
-  &&::-ms-input-placeholder,
-  &&:-ms-input-placeholder
+  &::-webkit-input-placeholder,
+  &::-ms-input-placeholder,
+  &:-ms-input-placeholder
   {
     color: #999;
   }

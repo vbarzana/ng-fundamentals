@@ -4,7 +4,6 @@ import {NgModule} from '@angular/core';
 
 import {NavbarComponent} from './navbar/navbar.component';
 import {EventsAppComponent} from './events-app.component';
-import {ToastrService} from './common/toastr.service';
 import {appRoutes} from './routes';
 import {Error404Component} from './errors/404.component';
 
@@ -18,7 +17,6 @@ import {
     EventThumbnailComponent
 } from './events/index';
 import {AuthService} from './user/auth.service';
-import {UserModule} from './user/user.module';
 
 @NgModule({
     imports: [
@@ -35,7 +33,6 @@ import {UserModule} from './user/user.module';
         NavbarComponent
     ],
     providers: [
-        ToastrService,
         EventService,
         EventRouteActivator,
         EventListResolver,
