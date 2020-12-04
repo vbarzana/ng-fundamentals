@@ -4,8 +4,7 @@ import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
 @Component({
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss']
+    templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
     public profileForm: FormGroup;
@@ -20,8 +19,8 @@ export class ProfileComponent implements OnInit {
 
     ngOnInit() {
         const {currentUser} = this.authService;
-        this.firstName = new FormControl(currentUser.firstName, Validators.required);
-        this.lastName = new FormControl(currentUser.lastName, Validators.required);
+        this.firstName = new FormControl(currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
+        this.lastName = new FormControl(currentUser.lastName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
 
         this.profileForm = new FormGroup({
             firstName: this.firstName,

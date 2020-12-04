@@ -12,7 +12,8 @@
                         placeholder="First Name..."
                         [ngClass]="{error: !validateFirstName()}"
                 />
-                <em *ngIf="!validateFirstName()">Required</em>
+                <em *ngIf="profileForm.controls.firstName.errors?.required && !validateFirstName()">Required</em>
+                <em *ngIf="profileForm.controls.firstName.errors?.pattern && !validateFirstName()">Must start with a letter</em>
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name:</label>
@@ -23,7 +24,8 @@
                         placeholder="Last Name..."
                         [ngClass]="{'error': !validateLastName()}"
                 />
-                <em *ngIf="!validateLastName()">Required</em>
+                <em *ngIf="profileForm.controls.lastName.errors?.required && !validateLastName()">Required</em>
+                <em *ngIf="profileForm.controls.lastName.errors?.pattern && !validateLastName()">Must start with a letter</em>
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>

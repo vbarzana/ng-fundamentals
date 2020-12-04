@@ -17,4 +17,8 @@ export class CreateEventComponent {
     canDeactivateCreateEvent() {
 
     }
+
+    saveEvent(formValues: any) {
+        console.log(formValues);
+    }
 }
