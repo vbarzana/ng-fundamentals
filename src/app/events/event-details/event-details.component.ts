@@ -10,7 +10,6 @@ export class EventDetailsComponent implements OnInit {
     event: IEvent;
 
     constructor(private eventsService: EventService, private route: ActivatedRoute) {
-
     }
 
     ngOnInit() {
