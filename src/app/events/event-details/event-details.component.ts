@@ -9,6 +9,8 @@ import {EventService, IEvent, ISession} from '../shared/index';
 export class EventDetailsComponent implements OnInit {
     private event: IEvent;
     private addMode = false;
+    private filterBy = 'all';
+    private sortBy = 'name';
 
     constructor(private eventsService: EventService, private route: ActivatedRoute) {
     }
