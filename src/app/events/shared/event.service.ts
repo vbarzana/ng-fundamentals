@@ -19,4 +19,9 @@ export class EventService {
         event.sessions = [];
         EVENTS_DATA.push(event);
     }
+
+    updateEvent(eventToModify: IEvent) {
+        const position = EVENTS_DATA.findIndex(event => event.id === eventToModify.id);
+        EVENTS_DATA[position] = eventToModify;
+    }
 }

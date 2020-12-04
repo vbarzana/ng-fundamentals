@@ -9,7 +9,7 @@ import {IEvent} from '../shared/event.model';
 })
 export class CreateEventComponent {
     isDirty = true;
-    newEvent: IEvent;
+    private newEvent: IEvent;
 
     constructor(private eventsService: EventService, private router: Router) {
     }

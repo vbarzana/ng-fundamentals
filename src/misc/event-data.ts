@@ -3,11 +3,11 @@ import {IEvent} from '../app/events/shared';
 export const EVENTS_DATA: IEvent[] = [
     {
         id: 1,
-        name: 'Angular Connect',
+        name: 'RectAngular',
         date: new Date('9/26/2036'),
         time: '10:00 am',
         price: 599.99,
-        imageUrl: '/assets/images/angularconnect-shield.png',
+        imageUrl: '/assets/images/react-logo.png',
         onlineUrl: '',
         sessions: [
             {

@@ -16,7 +16,8 @@ import {
     SessionListComponent,
     EventDetailsComponent,
     CreateSessionComponent,
-    EventThumbnailComponent
+    EventThumbnailComponent,
+    CollapsibleWellComponent
 } from './events/index';
 import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -37,6 +38,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         CreateSessionComponent,
         CreateEventComponent,
         Error404Component,
+        CollapsibleWellComponent,
         NavbarComponent
     ],
     providers: [

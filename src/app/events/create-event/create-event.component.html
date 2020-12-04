@@ -52,7 +52,7 @@
                 <input (ngModel)="newEvent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text"
                        class="form-control"
                        placeholder="url of image..."/>
-                <img [src]="newEventForm.controls.imageUrl.value" (click)="newEventForm.controls.imageUrl.setValue('https://uploads.toptal.io/blog/image/125413/toptal-blog-image-1518523133236-d2bc894552c77f954f1e5ce48da6604d.png')"/>
+                <img [src]="newEventForm.controls.imageUrl?.value" (click)="newEventForm.controls.imageUrl.setValue('https://uploads.toptal.io/blog/image/125413/toptal-blog-image-1518523133236-d2bc894552c77f954f1e5ce48da6604d.png')"/>
             </div>
         </div>
 
