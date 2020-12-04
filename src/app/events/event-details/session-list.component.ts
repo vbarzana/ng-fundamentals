@@ -14,32 +14,43 @@ export class SessionListComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         if (!this.sessions) {
-            return void 0;
+            return;
         }
-        this.filterSessions(this.filterBy);
-        this.sortSessions(this.sortBy);
+        if (this.filterBy) {
+            this.filterSessions(this.filterBy);
+        }
+        if (this.sortBy) {
+            this.sortSessions(this.sortBy);
+        }
     }
 
     filterSessions(filterBy: string) {
         if (!filterBy || filterBy === 'all') {
             return this.visibleSessions = this.sessions;
         }
-        return this.visibleSessions = this.sessions.filter((session: ISession) => session?.level.toLocaleLowerCase() === filterBy);
+        return this.visibleSessions = this.sessions.filter(
+            (session: ISession) => session?.level.toLocaleLowerCase() === filterBy
+        );
     }
 
     sortSessions(sortBy: string) {
         const sorterFn = sortBy === 'votes'
-            ? this.sortByVotesDescending
-            : this.sortByFieldAscending.bind(this, sortBy);
+            ? sortByVotesDescending
+            : sortByFieldAscending.bind(null, sortBy);
 
         return this.visibleSessions.sort(sorterFn);
     }
+}
 
-    sortByFieldAscending(field: string, session1: ISession, session2: ISession) {
-        return session1.name >= session2.name ? 1 : -1;
+function sortByFieldAscending(field: string, session1: ISession, session2: ISession): number {
+    if (session1[field] > session2[field]) {
+        return 1;
+    } else if (session1[field] === session2[field]) {
+        return 0;
     }
+    return -1;
+}
 
-    sortByVotesDescending(session1: ISession, session2: ISession) {
-        return session1.voters?.length >= session2.voters?.length ? -1 : 1;
-    }
+function sortByVotesDescending(session1: ISession, session2: ISession): number {
+    return session1.voters?.length - session2.voters?.length;
 }
