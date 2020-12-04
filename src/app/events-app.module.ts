@@ -6,29 +6,32 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {EventsAppComponent} from './events-app.component';
 import {appRoutes} from './routes';
 import {Error404Component} from './errors/404.component';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 import {
-    EventService,
-    EventListResolver,
-    EventListComponent,
-    EventRouteActivator,
-    CreateEventComponent,
-    SessionListComponent,
-    EventDetailsComponent,
-    CreateSessionComponent,
-    EventThumbnailComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    CreateEventComponent,
+    CreateSessionComponent,
+    DurationPipe,
+    EventDetailsComponent,
+    EventListComponent,
+    EventListResolver,
+    EventRouteActivator,
+    EventService,
+    EventThumbnailComponent,
+    SessionListComponent
 } from './events/index';
 import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
         RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy'})
     ],
     declarations: [
@@ -45,10 +48,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         DurationPipe
     ],
     providers: [
-        EventService,
-        EventRouteActivator,
-        EventListResolver,
         AuthService,
+        EventService,
+        ToastrService,
+        EventListResolver,
+        EventRouteActivator,
         {
             provide: 'canDeactivateCreateEvent',
             useValue: checkDirtyState

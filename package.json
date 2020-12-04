@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^11.0.3",
+    "@angular/animations": "11.0.3",
     "@angular/common": "^11.0.3",
     "@angular/compiler": "11.0.3",
     "@angular/core": "11.0.3",
@@ -20,9 +20,11 @@
     "@angular/platform-browser": "^11.0.3",
     "@angular/platform-browser-dynamic": "^11.0.3",
     "@angular/router": "^11.0.3",
+    "bootstrap": "4.5.3",
     "core-js": "2.6.12",
     "jquery": "3.5.1",
     "ngf-bootstrap": "0.0.5",
+    "ngx-toastr": "13.2.0",
     "rxjs": "^6.6.3",
     "tslib": "^1.9.0",
     "zone.js": "^0.10.3"
