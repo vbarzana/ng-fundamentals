@@ -11,6 +11,5 @@ export class CollapsibleWellComponent {
 
     toggleContent() {
         this.visible = !this.visible;
-
     }
 }

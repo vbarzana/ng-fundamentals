@@ -28,14 +28,18 @@ export class SessionListComponent implements OnChanges {
     }
 
     sortSessions(sortBy: string) {
-        const byVotes = sortBy === 'votes';
-        return this.visibleSessions.sort(
-            (session1: ISession, session2: ISession) => {
-                if (byVotes) {
-                    return session1.voters?.length >= session2.voters?.length ? -1 : 1;
-                }
-                return session1[sortBy] >= session2[sortBy] ? 1 : -1;
-            }
-        );
+        const sorterFn = sortBy === 'votes'
+            ? this.sortByVotesDescending
+            : this.sortByFieldAscending.bind(this, sortBy);
+
+        return this.visibleSessions.sort(sorterFn);
+    }
+
+    sortByFieldAscending(field: string, session1: ISession, session2: ISession) {
+        return session1.name >= session2.name ? 1 : -1;
+    }
+
+    sortByVotesDescending(session1: ISession, session2: ISession) {
+        return session1.voters?.length >= session2.voters?.length ? -1 : 1;
     }
 }
