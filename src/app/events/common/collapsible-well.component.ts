@@ -5,9 +5,9 @@ import {Component, Input} from '@angular/core';
     templateUrl: './collapsible-well.component.html'
 })
 export class CollapsibleWellComponent {
-    private visible = true;
+    public visible = true;
     @Input()
-    private title: string;
+    public title: string;
 
     toggleContent() {
         this.visible = !this.visible;

@@ -6,11 +6,11 @@ import {ISession} from '../shared/index';
     templateUrl: 'session-list.component.html'
 })
 export class SessionListComponent implements OnChanges {
-    @Input() private sessions: ISession[];
-    @Input() private filterBy: string;
-    @Input() private sortBy: string;
+    @Input() public sessions: ISession[];
+    @Input() public filterBy: string;
+    @Input() public sortBy: string;
 
-    private visibleSessions: ISession[] = [];
+    public visibleSessions: ISession[] = [];
 
     ngOnChanges(changes: SimpleChanges) {
         if (!this.sessions) {

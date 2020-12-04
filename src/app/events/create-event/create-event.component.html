@@ -28,14 +28,16 @@
         <div ngModelGroup="location">
             <div class="form-group">
                 <label for="address">Event Location:</label>
-                <input (ngModel)="newEvent.address" name="address" id="address" type="text" class="form-control" placeholder="Address of event..."/>
+                <input (ngModel)="newEvent.location?.address" name="address" id="address" type="text" class="form-control"
+                       placeholder="Address of event..."/>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <input (ngModel)="newEvent.city" name="city" id="city" type="text" class="form-control" placeholder="City..."/>
+                    <input (ngModel)="newEvent.location?.city" name="city" id="city" type="text" class="form-control" placeholder="City..."/>
                 </div>
                 <div class="col-md-6">
-                    <input (ngModel)="newEvent.country" name="country" id="country" type="text" class="form-control" placeholder="Country..."/>
+                    <input (ngModel)="newEvent.location?.country" name="country" id="country" type="text" class="form-control"
+                           placeholder="Country..."/>
                 </div>
             </div>
         </div>
@@ -52,7 +54,8 @@
                 <input (ngModel)="newEvent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text"
                        class="form-control"
                        placeholder="url of image..."/>
-                <img [src]="newEventForm.controls.imageUrl?.value" (click)="newEventForm.controls.imageUrl.setValue('https://uploads.toptal.io/blog/image/125413/toptal-blog-image-1518523133236-d2bc894552c77f954f1e5ce48da6604d.png')"/>
+                <img [src]="newEventForm.controls.imageUrl?.value"
+                     (click)="newEventForm.controls.imageUrl.setValue('https://uploads.toptal.io/blog/image/125413/toptal-blog-image-1518523133236-d2bc894552c77f954f1e5ce48da6604d.png')"/>
             </div>
         </div>
 

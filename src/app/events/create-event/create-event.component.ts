@@ -8,8 +8,8 @@ import {IEvent} from '../shared/event.model';
     styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent {
-    isDirty = true;
-    private newEvent: IEvent;
+    public isDirty = true;
+    public newEvent: IEvent;
 
     constructor(private eventsService: EventService, private router: Router) {
     }

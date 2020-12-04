@@ -7,10 +7,10 @@ import {EventService, IEvent, ISession} from '../shared/index';
     styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
-    private event: IEvent;
-    private addMode = false;
-    private filterBy = 'all';
-    private sortBy = 'name';
+    public event: IEvent;
+    public addMode = false;
+    public filterBy = 'all';
+    public sortBy = 'name';
 
     constructor(private eventsService: EventService, private route: ActivatedRoute) {
     }
