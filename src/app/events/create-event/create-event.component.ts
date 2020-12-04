@@ -1,24 +1,25 @@
-import {Component} from '@angular/core';
-import {ActivatedRouteSnapshot, Router} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {EventService} from '../shared/event.service';
+import {IEvent} from '../shared/event.model';
 
 @Component({
-    templateUrl: './create-event.component.html'
+    templateUrl: './create-event.component.html',
+    styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent {
     isDirty = true;
 
-    constructor(private router: Router) {
+    constructor(private eventsService: EventService, private router: Router) {
     }
 
     cancel() {
         this.router.navigate(['/events']);
     }
 
-    canDeactivateCreateEvent() {
-
-    }
-
     saveEvent(formValues: any) {
-        console.log(formValues);
+        this.eventsService.saveEvent(formValues);
+        this.isDirty = false;
+        this.router.navigate(['/events']);
     }
 }

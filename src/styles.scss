@@ -27,8 +27,8 @@ em {
   padding-left: 10px;
 }
 
-input {
-  &.error {
+.error {
+  input {
     background-color: #E3C3C5;
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */

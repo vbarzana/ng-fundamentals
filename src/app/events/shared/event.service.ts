@@ -13,4 +13,10 @@ export class EventService {
     getEvent(id: number): IEvent {
         return EVENTS_DATA.find(evt => evt.id === id);
     }
+
+    saveEvent(event: IEvent) {
+        event.id = EVENTS_DATA.length + 1;
+        event.sessions = [];
+        EVENTS_DATA.push(event);
+    }
 }
