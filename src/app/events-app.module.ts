@@ -8,13 +8,14 @@ import {appRoutes} from './routes';
 import {Error404Component} from './errors/404.component';
 
 import {
+    EventService,
+    EventListResolver,
+    EventListComponent,
+    EventRouteActivator,
     CreateEventComponent,
     EventDetailsComponent,
-    EventListComponent,
-    EventListResolver,
-    EventRouteActivator,
-    EventService,
-    EventThumbnailComponent
+    CreateSessionComponent,
+    EventThumbnailComponent,
 } from './events/index';
 import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -24,13 +25,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' })
+        RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy'})
     ],
     declarations: [
         EventsAppComponent,
         EventListComponent,
         EventThumbnailComponent,
         EventDetailsComponent,
+        CreateSessionComponent,
         CreateEventComponent,
         Error404Component,
         NavbarComponent
