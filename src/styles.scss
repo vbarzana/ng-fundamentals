@@ -28,7 +28,7 @@ em {
 }
 
 .error {
-  input {
+  input, select, textarea {
     background-color: #E3C3C5;
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
