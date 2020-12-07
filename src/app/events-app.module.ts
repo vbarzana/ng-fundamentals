@@ -9,7 +9,6 @@ import {Error404Component} from './errors/404.component';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 import {
-    CollapsibleWellComponent,
     CreateEventComponent,
     CreateSessionComponent,
     DurationPipe,
@@ -21,9 +20,13 @@ import {
     EventThumbnailComponent,
     SessionListComponent
 } from './events/index';
+
 import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CollapsibleWellComponent, JQ_TOKEN, ModalTriggerDirective, SimpleModalComponent} from './events/common/index';
+
+const $ = window['$'];
 
 @NgModule({
     imports: [
@@ -35,6 +38,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy'})
     ],
     declarations: [
+        Error404Component,
         EventsAppComponent,
         EventListComponent,
         SessionListComponent,
@@ -42,8 +46,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         EventDetailsComponent,
         CreateSessionComponent,
         CreateEventComponent,
-        Error404Component,
+        SimpleModalComponent,
         CollapsibleWellComponent,
+        ModalTriggerDirective,
         NavbarComponent,
         DurationPipe
     ],
@@ -53,6 +58,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         ToastrService,
         EventListResolver,
         EventRouteActivator,
+        {
+            provide: JQ_TOKEN,
+            useValue: $
+        },
         {
             provide: 'canDeactivateCreateEvent',
             useValue: checkDirtyState

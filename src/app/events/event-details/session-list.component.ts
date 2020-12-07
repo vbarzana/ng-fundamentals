@@ -16,6 +16,9 @@ export class SessionListComponent implements OnChanges {
         if (!this.sessions) {
             return;
         }
+        if (!this.filterBy && !this.sortBy) {
+            this.visibleSessions = this.sessions;
+        }
         if (this.filterBy) {
             this.filterSessions(this.filterBy);
         }
@@ -52,5 +55,5 @@ function sortByFieldAscending(field: string, session1: ISession, session2: ISess
 }
 
 function sortByVotesDescending(session1: ISession, session2: ISession): number {
-    return session1.voters?.length - session2.voters?.length;
+    return session2.voters?.length - session1.voters?.length;
 }

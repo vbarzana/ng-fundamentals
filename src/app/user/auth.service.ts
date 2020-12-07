@@ -4,6 +4,7 @@ import {IUserModel} from './user.model';
 @Injectable()
 export class AuthService {
     public currentUser: IUserModel;
+    public isLoggedIn = false;
 
     loginWithUserAndPassword(userName: string, password: string) {
         // @todo: login the user against some storage
@@ -13,6 +14,7 @@ export class AuthService {
             firstName: 'John',
             lastName: 'Snow'
         };
+        this.isLoggedIn = this.isAuthenticated();
     }
 
     isAuthenticated() {

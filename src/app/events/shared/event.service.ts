@@ -1,8 +1,8 @@
 import {EVENTS_DATA} from '../../../misc/event-data';
 import {Injectable} from '@angular/core';
-import {IEvent} from './index';
-import {Observable, of} from 'rxjs';
-import {delay} from 'rxjs/operators';
+import {IEvent, ISession} from './index';
+import {from, Observable, of} from 'rxjs';
+import {delay, filter} from 'rxjs/operators';
 
 @Injectable()
 export class EventService {
@@ -23,5 +23,20 @@ export class EventService {
     updateEvent(eventToModify: IEvent) {
         const position = EVENTS_DATA.findIndex(event => event.id === eventToModify.id);
         EVENTS_DATA[position] = eventToModify;
+    }
+
+    searchSessions(searchTerm: string): Observable<ISession[]> {
+        const lowerSearch = searchTerm.toLocaleLowerCase();
+        let matchingSession;
+        const results: ISession[] = EVENTS_DATA.reduce((acc: ISession[], event: IEvent) => {
+            return acc.concat(event.sessions.filter((session: ISession) => {
+                matchingSession = session.name.toLocaleLowerCase().indexOf(lowerSearch) > -1;
+                if (matchingSession) {
+                    session.eventId = event.id;
+                }
+                return session;
+            }));
+        }, []);
+        return of(results);
     }
 }
