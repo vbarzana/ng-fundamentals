@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import {EventService, IEvent, ISession} from '../shared/index';
 
 @Component({
@@ -16,10 +16,10 @@ export class EventDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-        const id: number = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-        if (!isNaN(id)) {
-            this.event = this.eventsService.getEvent(id);
-        }
+        this.route.params.forEach((params: Params) => {
+            this.event = this.eventsService.getEvent(+params['id']);
+            this.addMode = false;
+        });
     }
 
     addSession() {
