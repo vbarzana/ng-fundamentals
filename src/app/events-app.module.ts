@@ -28,6 +28,7 @@ import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CollapsibleWellComponent, JQ_TOKEN, ModalTriggerDirective, SimpleModalComponent} from './events/common/index';
+import {HttpClientModule} from '@angular/common/http';
 
 const $ = window['$'];
 
@@ -38,6 +39,7 @@ const $ = window['$'];
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
+        HttpClientModule,
         RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy'})
     ],
     declarations: [
