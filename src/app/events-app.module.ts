@@ -18,7 +18,8 @@ import {
     EventRouteActivator,
     EventService,
     EventThumbnailComponent,
-    SessionListComponent
+    SessionListComponent,
+    UpvoteComponent, VoterService
 } from './events/index';
 
 import {AuthService} from './user/auth.service';
@@ -48,6 +49,7 @@ const $ = window['$'];
         CreateEventComponent,
         SimpleModalComponent,
         CollapsibleWellComponent,
+        UpvoteComponent,
         ModalTriggerDirective,
         NavbarComponent,
         DurationPipe
@@ -58,6 +60,7 @@ const $ = window['$'];
         ToastrService,
         EventListResolver,
         EventRouteActivator,
+        VoterService,
         {
             provide: JQ_TOKEN,
             useValue: $
