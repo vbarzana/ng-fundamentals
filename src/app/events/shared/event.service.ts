@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {IEvent, ISession} from './index';
 import {Observable, of} from 'rxjs';
 import {catchError, delay} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class EventService {
@@ -21,9 +21,13 @@ export class EventService {
     }
 
     saveEvent(event: IEvent) {
-        event.id = EVENTS_DATA.length + 1;
-        event.sessions = [];
-        EVENTS_DATA.push(event);
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        return this.http.post<IEvent>('/api/events', event, options)
+            .pipe(catchError(this.handleError<IEvent>('saveEvent')));
     }
 
     updateEvent(eventToModify: IEvent) {
