@@ -10,7 +10,7 @@ import {EventService} from '../events/shared/event.service';
 })
 export class NavbarComponent {
     public searchTerm = '';
-    public foundSessions: ISession[] = null;
+    public foundSessions: ISession[] = [];
 
     constructor(public authService: AuthService, private eventService: EventService) {
     }

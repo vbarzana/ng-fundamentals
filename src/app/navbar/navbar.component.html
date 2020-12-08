@@ -40,10 +40,10 @@
             <div class="navbar-header navbar-right">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a *ngIf="!authService.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+                        <a *ngIf="!authService.isAuthenticated()" [routerLink]="['/user/login']">Login</a>
                         <a
                                 *ngIf="authService.isAuthenticated()"
-                                [routerLink]="['user/profile']"
+                                [routerLink]="['/user/profile']"
                         >
                             Welcome {{authService.currentUser.firstName}} {{authService.currentUser.lastName}}
                         </a>
@@ -60,7 +60,7 @@
                             [(ngModel)]="searchTerm"
                     >
                 </div>
-                <button class="btn btn-default" modal-trigger>
+                <button class="btn btn-default" modal-trigger="search-results">
                     Search
                 </button>
             </form>
@@ -68,7 +68,7 @@
     </div>
 </div>
 
-<simple-modal title="Matching Sessions">
+<simple-modal elementId="search-results" title="Matching Sessions" *ngIf="foundSessions.length > 0">
     <div class="list-group">
         <a
                 class="list-group-item"
