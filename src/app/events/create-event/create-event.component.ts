@@ -9,7 +9,16 @@ import {IEvent} from '../shared/event.model';
 })
 export class CreateEventComponent {
     public isDirty = true;
-    public newEvent: IEvent;
+    public event: IEvent = {
+        date: undefined,
+        id: 0,
+        imageUrl: '',
+        name: '',
+        price: 0,
+        time: '',
+        sessions: [],
+        location: {address: null, city: null, country: null}
+    };
 
     constructor(private eventsService: EventService, private router: Router) {
     }

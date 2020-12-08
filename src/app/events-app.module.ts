@@ -18,8 +18,10 @@ import {
     EventRouteActivator,
     EventService,
     EventThumbnailComponent,
+    LocationValidator,
     SessionListComponent,
-    UpvoteComponent, VoterService
+    UpvoteComponent,
+    VoterService
 } from './events/index';
 
 import {AuthService} from './user/auth.service';
@@ -51,6 +53,7 @@ const $ = window['$'];
         CollapsibleWellComponent,
         UpvoteComponent,
         ModalTriggerDirective,
+        LocationValidator,
         NavbarComponent,
         DurationPipe
     ],
