@@ -15,7 +15,7 @@ import {
     EventDetailsComponent,
     EventListComponent,
     EventListResolver,
-    EventRouteActivator,
+    EventResolver,
     EventService,
     EventThumbnailComponent,
     LocationValidator,
@@ -64,7 +64,7 @@ const $ = window['$'];
         EventService,
         ToastrService,
         EventListResolver,
-        EventRouteActivator,
+        EventResolver,
         VoterService,
         {
             provide: JQ_TOKEN,

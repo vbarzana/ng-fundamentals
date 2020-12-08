@@ -7,7 +7,7 @@ export const EVENTS_DATA: IEvent[] = [
         date: new Date('9/26/2036'),
         time: '10:00 am',
         price: 599.99,
-        imageUrl: '/assets/images/react-logo.png',
+        imageUrl: '/assets/images/angularconnect-shield.png',
         onlineUrl: '',
         sessions: [
             {

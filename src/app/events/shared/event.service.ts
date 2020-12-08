@@ -1,17 +1,23 @@
 import {EVENTS_DATA} from '../../../misc/event-data';
 import {Injectable} from '@angular/core';
 import {IEvent, ISession} from './index';
-import {from, Observable, of} from 'rxjs';
-import {delay, filter} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, delay} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class EventService {
-    getEvents(): Observable<IEvent[]> {
-        return of(EVENTS_DATA).pipe(delay(500));
+    constructor(private http: HttpClient) {
     }
 
-    getEvent(id: number): IEvent {
-        return EVENTS_DATA.find(evt => evt.id === id);
+    getEvents(): Observable<IEvent[]> {
+        return this.http.get<IEvent[]>('/api/events')
+            .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
+    }
+
+    getEvent(id: number): Observable<IEvent> {
+        return this.http.get<IEvent>(`/api/events/${id}`)
+            .pipe(catchError(this.handleError<IEvent>('getEvent')));
     }
 
     saveEvent(event: IEvent) {
@@ -38,5 +44,12 @@ export class EventService {
             return acc.concat(matchingSessions);
         }, []);
         return of(results);
+    }
+
+    private handleError<T>(operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+            console.error(error);
+            return of(result as T);
+        };
     }
 }
