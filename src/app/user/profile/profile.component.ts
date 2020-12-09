@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
     constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
         if (!authService.currentUser) {
-            this.router.navigate(['user/login']);
+            this.router.navigate(['/user/login']);
         }
     }
 
@@ -39,13 +39,14 @@ export class ProfileComponent implements OnInit {
 
     saveProfile(formValues) {
         if (this.profileForm.valid) {
-            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-            this.toastr.success('Profile saved!');
-            this.router.navigate(['events']);
+            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
+                .subscribe(() => {
+                    this.toastr.success('Profile saved!');
+                });
         }
     }
 
     cancel() {
-        this.router.navigate(['events']);
+        this.router.navigate(['/events']);
     }
 }

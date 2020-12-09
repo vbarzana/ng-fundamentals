@@ -27,12 +27,12 @@ export class LoginComponent {
                 if (!user) {
                     return this.loginInvalid = true;
                 }
-                this.router.navigate(['events']);
+                this.router.navigate(['/events']);
             });
 
     }
 
     cancel() {
-        this.router.navigate(['events']);
+        this.router.navigate(['/events']);
     }
 }
