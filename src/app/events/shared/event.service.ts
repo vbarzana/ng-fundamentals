@@ -1,8 +1,7 @@
-import {EVENTS_DATA} from '../../../misc/event-data';
 import {Injectable} from '@angular/core';
 import {IEvent, ISession} from './index';
 import {Observable, of} from 'rxjs';
-import {catchError, delay} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
@@ -30,24 +29,9 @@ export class EventService {
             .pipe(catchError(this.handleError<IEvent>('saveEvent')));
     }
 
-    updateEvent(eventToModify: IEvent) {
-        const position = EVENTS_DATA.findIndex(event => event.id === eventToModify.id);
-        EVENTS_DATA[position] = eventToModify;
-    }
-
     searchSessions(searchTerm: string): Observable<ISession[]> {
-        const lowerSearch = searchTerm.toLocaleLowerCase();
-        const results: ISession[] = EVENTS_DATA.reduce((acc: ISession[], event: IEvent) => {
-            const matchingSessions = event.sessions.filter((session: ISession) => {
-                if (session.name.toLocaleLowerCase().indexOf(lowerSearch) > -1) {
-                    session.eventId = event.id;
-                    return session;
-                }
-                return null;
-            });
-            return acc.concat(matchingSessions);
-        }, []);
-        return of(results);
+        return this.http.get<ISession[]>(`/api/sessions/search/?search=${searchTerm}`)
+            .pipe(catchError(this.handleError<ISession[]>('searchSessions')));
     }
 
     private handleError<T>(operation = 'operation', result?: T) {
