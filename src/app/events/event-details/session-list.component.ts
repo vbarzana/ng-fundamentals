@@ -18,22 +18,15 @@ export class SessionListComponent implements OnChanges {
     constructor(private auth: AuthService, private voterService: VoterService) {
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges() {
         if (!this.sessions) {
             return;
         }
-        if (!this.filterBy && !this.sortBy) {
-            this.visibleSessions = this.sessions;
-        }
-        if (this.filterBy) {
-            this.filterSessions(this.filterBy);
-        }
-        if (this.sortBy) {
-            this.sortSessions(this.sortBy);
-        }
+        this.filterSessionsByLevel(this.filterBy);
+        this.sortSessionsByField(this.sortBy === 'name' ? this.sortBy : 'votes');
     }
 
-    filterSessions(filterBy: string) {
+    filterSessionsByLevel(filterBy: string) {
         if (!filterBy || filterBy === 'all') {
             return this.visibleSessions = this.sessions;
         }
@@ -42,7 +35,7 @@ export class SessionListComponent implements OnChanges {
         );
     }
 
-    sortSessions(sortBy: string) {
+    sortSessionsByField(sortBy: string) {
         const sorterFn = sortBy === 'votes'
             ? sortByVotesDescending
             : sortByFieldAscending.bind(null, sortBy);

@@ -21,6 +21,9 @@ export class VoterService {
     }
 
     addVoter(eventId: number, session: ISession, voterName: string): void {
+        if (!session.voters.find(voter => voter === voterName)) {
+            session.voters.push(voterName);
+        }
         const url = `${BASE_URL}/${eventId}/sessions/${session.id}/voters/${voterName}`;
         const options = {
             headers: new HttpHeaders({
