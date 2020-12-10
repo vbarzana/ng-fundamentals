@@ -6,7 +6,9 @@ import {Observable, of} from 'rxjs';
 
 const BASE_URL = `/api/events`;
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class VoterService {
     constructor(private http: HttpClient) {
     }

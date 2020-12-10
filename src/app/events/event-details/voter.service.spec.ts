@@ -1,13 +1,22 @@
 import {VoterService} from './voter.service';
 import {ISession} from '../shared/event.model';
 import {of} from 'rxjs';
+import {TestBed} from '@angular/core/testing';
+import {HttpClient} from '@angular/common/http';
 
 describe('VoterService', () => {
     let voterService: VoterService;
     let mockHttp;
+
     beforeEach(() => {
         mockHttp = jasmine.createSpyObj('mockHttp', ['delete', 'post']);
-        voterService = new VoterService(mockHttp);
+
+        TestBed.configureTestingModule({
+            providers: [
+                {provide: HttpClient, useValue: mockHttp}
+            ]
+        });
+        voterService = TestBed.inject(VoterService);
     });
 
     describe('deleteVoter', () => {
