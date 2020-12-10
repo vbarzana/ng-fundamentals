@@ -9,7 +9,7 @@
     "test": "ng test --sourceMap=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node my-server/server.js"
+    "server": "node server/server.js"
   },
   "private": true,
   "dependencies": {
