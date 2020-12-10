@@ -5,7 +5,12 @@ import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
-    templateUrl: './profile.component.html'
+    templateUrl: './profile.component.html',
+    styles: [`
+        .logout-button {
+            float: right;
+        }
+    `]
 })
 export class ProfileComponent implements OnInit {
     public profileForm: FormGroup;
@@ -44,6 +49,13 @@ export class ProfileComponent implements OnInit {
                     this.toastr.success('Profile saved!');
                 });
         }
+    }
+
+    logout() {
+        this.authService.logout()
+            .subscribe(() => {
+                this.router.navigate(['/events']);
+            });
     }
 
     cancel() {

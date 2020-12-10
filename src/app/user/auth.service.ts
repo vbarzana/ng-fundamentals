@@ -59,10 +59,14 @@ export class AuthService {
         return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options);
     }
 
-    private handleError<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            console.error(error);
-            return of(result as T);
-        };
+    logout(): Observable<any> {
+        if (!this.currentUser) {
+            return;
+        }
+
+        return this.http.post('/api/logout', {})
+            .pipe(tap(() => {
+                this.currentUser = null;
+            }));
     }
 }
