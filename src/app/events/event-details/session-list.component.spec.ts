@@ -5,8 +5,8 @@ import {ISession} from '../shared/event.model';
 
 describe('SessionListComponent', () => {
     let component: SessionListComponent;
-    let mockAuthService: AuthService;
-    let mockVotersService: VoterService;
+    const mockAuthService: AuthService = null;
+    const mockVotersService: VoterService = null;
 
     beforeEach(() => {
         component = new SessionListComponent(mockAuthService, mockVotersService);
