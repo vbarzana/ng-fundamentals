@@ -13,10 +13,10 @@ import {Router} from '@angular/router';
     `]
 })
 export class LoginComponent {
-    private userName: string;
-    private password: string;
-    private mouseoverLogin: boolean;
-    private loginInvalid = false;
+    public userName: string;
+    public password: string;
+    public mouseoverLogin: boolean;
+    public loginInvalid = false;
 
     constructor(private authService: AuthService, private router: Router) {
     }

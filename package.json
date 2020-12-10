@@ -4,12 +4,17 @@
   "homepage": "https://vbarzana.github.io/ng-fundamentals/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "node server/server.js",
+    "ng-start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test --sourceMap=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node server/server.js"
+    "heroku-postbuild": "ng build --prod"
+  },
+  "engines": {
+    "node": "12.19.0",
+    "npm": "6.14.8"
   },
   "private": true,
   "dependencies": {
