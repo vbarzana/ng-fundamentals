@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {SessionListComponent} from './session-list.component';
 import {DebugElement} from '@angular/core';
 import {AuthService} from '../../user/auth.service';
+import {By} from '@angular/platform-browser';
 import {VoterService} from './voter.service';
 import {ISession} from '../shared/event.model';
 import {UpvoteComponent} from './upvote.component';
@@ -62,7 +63,8 @@ describe('SessionListComponent integrated', () => {
             component.ngOnChanges();
             fixture.detectChanges();
 
-            expect(element.querySelector('[class=well-title]').textContent).toContain('Session 1');
+            // expect(element.querySelector('[class=well-title]').textContent).toContain('Session 1');
+            expect(debugEl.query(By.css('[class=well-title]')).nativeElement.textContent).toContain('Session 1');
         });
     });
 });

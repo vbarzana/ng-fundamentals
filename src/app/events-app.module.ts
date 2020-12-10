@@ -20,8 +20,7 @@ import {
     EventThumbnailComponent,
     LocationValidator,
     SessionListComponent,
-    UpvoteComponent,
-    VoterService
+    UpvoteComponent
 } from './events/index';
 
 import {AuthService} from './user/auth.service';
@@ -65,7 +64,6 @@ const $ = window['$'];
         ToastrService,
         EventListResolver,
         EventResolver,
-        VoterService,
         {
             provide: JQ_TOKEN,
             useValue: $
